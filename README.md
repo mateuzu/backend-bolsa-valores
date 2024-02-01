@@ -11,13 +11,7 @@ O código fonte e os recursos neste repositório foram baseados na vídeo aula d
 <br>
 
 # Tecnologias Utilizadas 💻
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40" style="max-width: 100%;">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" alt="spring" width="40" height="40" style="max-width: 100%;">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="mysql" width="40" height="40" style="max-width: 100%;">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="docker" width="40" height="40" style="max-width: 100%;">
-<img src="https://asset.brandfetch.io/idD7RfhCFS/id3KSPzOxb.png" alt="junit" width="40" height="40" style="max-width: 100%;">
-<img src="https://res.cloudinary.com/dnttxkyym/image/upload/v1706828466/mockups-projetos/image_28_wzzvu8.svg" alt="junit" width="40" height="40" style="max-width: 100%;">
-<img src="https://www.svgrepo.com/show/353904/insomnia.svg" alt="junit" width="40" height="40" style="max-width: 100%;">
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40" style="max-width: 100%;"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" alt="spring" width="40" height="40" style="max-width: 100%;"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="mysql" width="40" height="40" style="max-width: 100%;"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="docker" width="40" height="40" style="max-width: 100%;"><img src="https://asset.brandfetch.io/idD7RfhCFS/id3KSPzOxb.png" alt="junit" width="40" height="40" style="max-width: 100%;"><img src="https://res.cloudinary.com/dnttxkyym/image/upload/v1706828466/mockups-projetos/image_28_wzzvu8.svg" alt="junit" width="40" height="40" style="max-width: 100%;"><img src="https://www.svgrepo.com/show/353904/insomnia.svg" alt="insomnia" width="40" height="40" style="max-width: 100%;">
 
 <br>
 
