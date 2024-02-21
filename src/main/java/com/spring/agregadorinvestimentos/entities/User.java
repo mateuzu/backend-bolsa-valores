@@ -106,8 +106,8 @@ public class User {
 		User user = new User(UUID.randomUUID(),
 				createUserDto.userName(),
 				createUserDto.email(), 
-				createUserDto.password()
-				, Instant.now(), 
+				createUserDto.password(), 
+				Instant.now(), 
 				null);
 		return user;
 	}
