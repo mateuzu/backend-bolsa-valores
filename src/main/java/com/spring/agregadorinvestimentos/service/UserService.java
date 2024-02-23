@@ -5,11 +5,19 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.spring.agregadorinvestimentos.controller.dto.AccountResponseDto;
+import com.spring.agregadorinvestimentos.controller.dto.CreateAccountDto;
 import com.spring.agregadorinvestimentos.controller.dto.CreateUserDto;
 import com.spring.agregadorinvestimentos.controller.dto.UpdateUserDto;
+import com.spring.agregadorinvestimentos.entities.Account;
+import com.spring.agregadorinvestimentos.entities.BillingAddress;
 import com.spring.agregadorinvestimentos.entities.User;
+import com.spring.agregadorinvestimentos.repository.AccountRepository;
+import com.spring.agregadorinvestimentos.repository.BillingAddressRepository;
 import com.spring.agregadorinvestimentos.repository.UserRepository;
 
 @Service
@@ -17,6 +25,12 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private AccountRepository accountRepository;
+	
+	@Autowired
+	private BillingAddressRepository billingAddressRepository;
 		
 	public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
@@ -66,5 +80,35 @@ public class UserService {
 		if(userExists) {
 			userRepository.deleteById(id);
 		}
+	}
+
+	public void createAccount(String userId, CreateAccountDto createAccountDto) {
+		var user = userRepository.findById(UUID.fromString(userId))
+						.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		
+		//DTO -> ENTITY
+		var account = new Account(UUID.randomUUID(),createAccountDto.description(), user, null, null);
+		
+		var accountCreated = accountRepository.save(account);
+		
+		var billingAddress = new BillingAddress(
+				accountCreated.getAccountId(), 
+				account, 
+				createAccountDto.street(), 
+				createAccountDto.number()
+				);
+		
+		billingAddressRepository.save(billingAddress);
+	}
+
+	public List<AccountResponseDto> listAccounts(String userId) {
+		var user = userRepository.findById(UUID.fromString(userId))
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		
+		return user.getAccounts()
+		.stream()
+			.map(userAccount-> 
+				new AccountResponseDto(userAccount.getAccountId().toString(), userAccount.getDescription()))
+			.toList();
 	}
 }
