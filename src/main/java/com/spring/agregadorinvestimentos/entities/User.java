@@ -1,6 +1,7 @@
 package com.spring.agregadorinvestimentos.entities;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,6 +34,8 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Account> accounts;
 	
 	//Camposs de auditoria para saber quando a entidade foi criada/atualizada
 	@CreationTimestamp
@@ -102,12 +106,20 @@ public class User {
 		this.updateTimestamp = updateTimestamp;
 	}
 	
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
 	public static User fromDTO (CreateUserDto createUserDto) {
 		User user = new User(UUID.randomUUID(),
 				createUserDto.userName(),
 				createUserDto.email(), 
-				createUserDto.password()
-				, Instant.now(), 
+				createUserDto.password(), 
+				Instant.now(), 
 				null);
 		return user;
 	}
